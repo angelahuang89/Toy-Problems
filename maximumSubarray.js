@@ -1,17 +1,28 @@
+// const maxSubArray = nums => {
+//   let max = Number.NEGATIVE_INFINITY;
+//   for (let i = 0; i < nums.length; i++) {
+//     let pointer = i;
+//     let curr = 0;
+//     while (pointer < nums.length) {
+//       curr += nums[pointer];
+//       if (curr > max) {
+//         max = curr;
+//       }
+//       pointer++;
+//     }
+//   }
+//   return max;
+// };
+
 const maxSubArray = nums => {
-  let max = Number.NEGATIVE_INFINITY;
+  let max = 0;
+  let curr = 0;
   for (let i = 0; i < nums.length; i++) {
-    let pointer = i;
-    let curr = 0;
-    while (pointer < nums.length) {
-      curr += nums[pointer];
-      if (curr > max) {
-        max = curr;
-      }
-      pointer++;
-    }
+    curr += nums[i];
+    if (curr > max) max = curr;
+    if (curr < 0) curr = 0;
   }
-  return max;
+  return max === 0 ? Math.max(...nums) : max;
 };
 
 // specification
