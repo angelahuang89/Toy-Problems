@@ -52,6 +52,22 @@ const islandPerimeter = grid => {
   return perimeter;
 };
 
+// const islandPerimeter = grid => {
+//   let perimeter = 0;
+//   for(let i = 0; i < grid.length; i++) {
+//     for(let j = 0; j < grid[i].length; j++) {
+//       if(grid[i][j]) {
+//         perimeter += 4;
+//         if(i > 0 && grid[i - 1][j]) perimeter -= 1;
+//         if(i < grid.length - 1 && grid[i + 1][j]) perimeter -= 1;
+//         if(j > 0 && grid[i][j - 1]) perimeter -= 1;
+//         if(j < grid[0].length - 1 && grid[i][j + 1]) perimeter -= 1;
+//       }
+//     }
+//   }
+//   return perimeter;
+// };
+
 // specification
 // input: matrix of 1s and 0s, 1 is land and 0 is water
 // output: perimter of the islange
@@ -73,7 +89,7 @@ const islandPerimeter = grid => {
 
 // approximation
 // declare perimeter variable as 0
-// declare stack as empty array
+// declare queue as empty array
 // iterate through grid
 // if land is found
 // add cell to queue
