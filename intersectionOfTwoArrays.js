@@ -1,18 +1,33 @@
+// const intersection = (nums1, nums2) => {
+//   const output = [];
+//   if (!nums1.length || !nums2.length) return output;
+//   const hash = {};
+//   for (let i = 0; i < nums1.length; i++) {
+//     if (hash[nums1[i]]) {
+//       hash[nums1[i]]++;
+//     } else {
+//       hash[nums1[i]] = 1;
+//     }
+//   }
+//   for (let i = 0; i < nums2.length; i++) {
+//     if (hash[nums2[i]]) {
+//       output.push(nums2[i]);
+//       delete hash[nums2[i]];
+//     }
+//   }
+//   return output;
+// };
+
 const intersection = (nums1, nums2) => {
   const output = [];
-  if (!nums1.length || !nums2.length) return output;
   const hash = {};
   for (let i = 0; i < nums1.length; i++) {
-    if (hash[nums1[i]]) {
-      hash[nums1[i]]++;
-    } else {
-      hash[nums1[i]] = 1;
-    }
+    hash[nums1[i]] = 1;
   }
   for (let i = 0; i < nums2.length; i++) {
-    if (hash[nums2[i]]) {
+    if (hash[nums2[i]] === 1) {
       output.push(nums2[i]);
-      delete hash[nums2[i]];
+      hash[nums2[i]]++;
     }
   }
   return output;
