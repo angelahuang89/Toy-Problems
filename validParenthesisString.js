@@ -1,22 +1,22 @@
-const checkValidString = s => {
-  let low = 0;
-  let high = 0;
-  for (let i = 0; i < s.length; i++) {
-    const curr = s[i];
-    if (curr === '(') {
-      low++;
-      high++;
-    } else if (curr === ')') {
-      if (low > 0) low--;
-      high--;
-    } else {
-      if (low > 0) low--;
-      high++;
-    }
-    if (high < 0) return false;
-  }
-  return low === 0;
-}
+// const checkValidString = s => {
+//   let low = 0;
+//   let high = 0;
+//   for (let i = 0; i < s.length; i++) {
+//     const curr = s[i];
+//     if (curr === '(') {
+//       low++;
+//       high++;
+//     } else if (curr === ')') {
+//       if (low > 0) low--;
+//       high--;
+//     } else {
+//       if (low > 0) low--;
+//       high++;
+//     }
+//     if (high < 0) return false;
+//   }
+//   return low === 0;
+// }
 
 // const checkValidString = s => {
 //   const openStack = [];
@@ -106,6 +106,39 @@ const checkValidString = s => {
 //   }
 //   return openCount === 0;
 // };
+
+const checkValidString = s => {
+  let openStack = [];
+  let wildStack = [];
+  for (let i = 0; i < s.length; i++) {
+    const curr = s[i];
+    if (curr === '(') {
+      openStack.push(i);
+    } else if (curr === ')') {
+      if (openStack.length) {
+        openStack.pop();
+      } else if (wildStack.length) {
+        wildStack.pop();
+      } else {
+        return false;
+      }
+    } else {
+      wildStack.push(i);
+    }
+  }
+  if (openStack.length === 0) {
+    return true;
+  } else if (openStack.length > wildStack.length) {
+    return false;
+  } else {
+    while (openStack.length) {
+      const lastOpen = openStack.pop();
+      const lastWild = wildStack.pop();
+      if (lastOpen > lastWild) return false;
+    }
+    return true;
+  }
+};
 
 // specification
 // input: string containing only (, ), and *
