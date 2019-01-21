@@ -5,20 +5,57 @@ class TreeNode {
   }
 }
 
+// const inorderTraversal = root => {
+//   const output = [];
+//   if (!root) return output;
+//   const traverse = node => {
+//     if (!node) return;
+//     traverse(node.left);
+//     output.push(node.val);
+//     traverse(node.right);
+//   }
+//   traverse(root.left);
+//   output.push(root.val);
+//   traverse(root.right);
+//   return output;
+// };
+
+// const inorderTraversal = root => {
+//   const output = [];
+//   if (!root) return output;
+//   const stack = [];
+//   let curr = root;
+//   while(curr) {
+//     stack.push(curr);
+//     curr = curr.left;
+//   }
+//   while (stack.length) {
+//     curr = stack.pop();
+//     output.push(curr.val);
+//     curr = curr.right;
+//     while(curr) {
+//       stack.push(curr);
+//       curr = curr.left;
+//     }
+//   }
+//   return output;
+// };
+
 const inorderTraversal = root => {
   const output = [];
-  if (!root) return output;
-  const traverse = node => {
-    if (!node) return;
-    traverse(node.left);
-    output.push(node.val);
-    traverse(node.right);
+  const stack = [];
+  let curr = root;
+  while (curr && stack.length) {
+    while (curr) {
+      stack.push(curr);
+      curr = curr.left;
+    }
+    curr = stack.pop();
+    output.push(curr.val);
+    curr = curr.right;
   }
-  traverse(root.left);
-  output.push(root.val);
-  traverse(root.right);
   return output;
-};
+}
 
 /*
 specification
