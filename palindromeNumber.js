@@ -1,20 +1,31 @@
+// const isPalindrome = x => {
+//   if (x < 0) return false;
+//   const digits = [];
+//   let num = x;
+//   while(num > 0) {
+//     const curr = num % 10;
+//     digits.push(curr);
+//     num = Math.floor(num / 10);
+//   }
+//   let left = 0;
+//   let right = digits.length - 1;;
+//   while (left <= right) {
+//     if (digits[left] !== digits[right]) return false;
+//     left++;
+//     right--;
+//   }
+//   return true;
+// };
+
 const isPalindrome = x => {
   if (x < 0) return false;
-  const digits = [];
+  let reverseX = 0;
   let num = x;
-  while(num > 0) {
-    const curr = num % 10;
-    digits.push(curr);
+  while (num) {
+    reverseX = reverseX * 10 + num % 10;
     num = Math.floor(num / 10);
   }
-  let left = 0;
-  let right = digits.length - 1;;
-  while (left <= right) {
-    if (digits[left] !== digits[right]) return false;
-    left++;
-    right--;
-  }
-  return true;
+  return reverseX === x;
 };
 
 /*
