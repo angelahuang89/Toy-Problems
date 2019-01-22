@@ -5,26 +5,50 @@ class ListNode {
   }
 }
 
+// const swapPairs = head => {
+//   if (!head || !head.next) return head;
+//   let prev = head;
+//   let curr = head;
+//   const newHead = curr.next;
+//   if (!head.next.next || !head.next.next.next) {
+//     const next = curr.next;
+//     const temp = next.next;
+//     next.next = curr;
+//     curr.next = temp;
+//     return newHead;
+//   }
+//   while (curr && curr.next) {
+//     const next = curr.next;
+//     const temp = next.next;
+//     next.next = curr;
+//     curr.next = temp;
+//     prev.next = next;
+//     prev = curr;
+//     curr = temp;
+//   }
+//   return newHead;
+// };
+
 const swapPairs = head => {
-  if (!head || !head.next) return head;
-  let prev = head;
-  let curr = head;
-  const newHead = curr.next;
-  if (!head.next.next || !head.next.next.next) {
-    const next = curr.next;
-    const temp = next.next;
-    next.next = curr;
-    curr.next = temp;
-    return newHead;
-  }
-  while (curr && curr.next) {
-    const next = curr.next;
-    const temp = next.next;
-    next.next = curr;
-    curr.next = temp;
-    prev.next = next;
-    prev = curr;
-    curr = temp;
+  if (!head) return head;;
+
+  var mid = head;
+  var left = null;
+  var right = head.next;
+  var newHead = head;
+
+  while (mid && right) {
+    if (left) {
+      left.next = right;
+    } else {
+      newHead = right;
+    }
+    mid.next = right.next;
+    right.next = mid;
+
+    left = mid;
+    mid = !mid ? mid : mid.next;
+    right = !mid ? mid : mid.next;
   }
   return newHead;
 };
