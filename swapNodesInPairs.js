@@ -32,10 +32,10 @@ class ListNode {
 const swapPairs = head => {
   if (!head) return head;;
 
-  var mid = head;
-  var left = null;
-  var right = head.next;
-  var newHead = head;
+  let mid = head;
+  let left = null;
+  let right = head.next;
+  let newHead = head;
 
   while (mid && right) {
     if (left) {
