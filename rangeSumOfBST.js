@@ -21,17 +21,17 @@ const rangeSumBST = (root, L, R) => {
 //   let sum = 0;
 //   const stack = [root];
 //   while (stack.length > 0) {
-//       const curr = stack.pop()
-//       if (!curr) continue;
-//       if (curr.val < L) {
-//         stack.push(curr.right)
-//       } else if (curr.val > R) {
-//         stack.push(curr.left)
-//       } else {
-//         sum += curr.val
-//         stack.push(curr.left)
-//         stack.push(curr.right)
-//       }
+//     const curr = stack.pop()
+//     if (!curr) continue;
+//     if (curr.val < L) {
+//       stack.push(curr.right)
+//     } else if (curr.val > R) {
+//       stack.push(curr.left)
+//     } else {
+//       sum += curr.val
+//       stack.push(curr.left)
+//       stack.push(curr.right)
+//     }
 //   }
 //   return sum;
 // };
