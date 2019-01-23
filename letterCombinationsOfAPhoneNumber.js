@@ -16,14 +16,14 @@ const letterCombinations = digits => {
 
   const createCombinations = (prev, curr) => {
     if (curr === '') return;
-    const preconstr = hash[prev];
+    const prevArr= hash[prev];
     const currNum = curr[0];
     const currArr = hash[currNum];
     const comboStr = prev + curr[0];
     const output = [];
-    for (let i = 0; i < preconstr.length; i++) {
+    for (let i = 0; i < prevArr.length; i++) {
       for (let j = 0; j < currArr.length; j++) {
-        output.push(preconstr[i] + currArr[j]);
+        output.push(prevArr[i] + currArr[j]);
       }
     }
     hash[comboStr] = output;
@@ -35,18 +35,32 @@ const letterCombinations = digits => {
   return hash[digits];
 };
 
-// const prevStr = str.slice(0, index + 1);
-// const prev = hash[prevStr];
-// const currStr = str.slice(index + 1, index + 2);
-// const curr = hash[currStr];
-// const comboStr = str.slice(0, index + 2);
-// if (!hash[comboStr]) hash[comboStr] = [];
-// for (let i = 0; i < prev.length; i++) {
-//   for (let j = 0; j < curr.length; j++) {
-//     hash[comboStr].push(prev[i] + curr[j]);
+// const letterCombinations = function(digits) {
+//   if (digits == '') return [];
+//   const results = [];
+//   findLetterCombinations(digits, 0, '', results);
+//   return results;
+// };
+
+// const findLetterCombinations = function(digits, startIndex, prefix, results) {
+//   if (startIndex == digits.length) {
+//     results.push(prefix);
+//     return;
 //   }
-// }
-// if (index + 1 < str.length - 1) createCombinations(str, index++)
+  
+//   const map = { 
+//     2: 'abc', 3: 'def', 4: 'ghi', 5: 'jkl', 
+//     6: 'mno', 7: 'pqrs', 8: 'tuv', 9: 'wxyz'
+//   };
+
+//   const curr = maps[digits[startIndex]];
+//   for (let i = 0; i < curr.length; i++) {
+//     const letter = curr[i];
+//     prefix += letter;
+//     findLetterCombinations(digits, startIndex + 1, prefix, results);
+//     prefix = prefix.substring(0, prefix.length - 1);
+//   } 
+// };
 
 /*
 specification
