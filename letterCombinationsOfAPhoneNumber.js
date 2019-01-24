@@ -14,12 +14,12 @@ const letterCombinations = digits => {
 
   if (hash[digits]) return hash[digits];
 
-  const createCombinations = (prev, curr) => {
-    if (curr === '') return;
+  const createCombinations = (str, prev, index) => {
+    if (index === str.length) return;
     const prevArr= hash[prev];
-    const currNum = curr[0];
+    const currNum = str[index];
     const currArr = hash[currNum];
-    const comboStr = prev + curr[0];
+    const comboStr = prev + str[index];
     const output = [];
     for (let i = 0; i < prevArr.length; i++) {
       for (let j = 0; j < currArr.length; j++) {
@@ -27,13 +27,50 @@ const letterCombinations = digits => {
       }
     }
     hash[comboStr] = output;
-    createCombinations(comboStr, curr.slice(1));
+    createCombinations(str, comboStr, index + 1);
   };
 
-  createCombinations(digits[0], digits.slice(1))
+  createCombinations(digits, digits[0], 1);
 
   return hash[digits];
 };
+
+// const letterCombinations = digits => {
+//   if (digits === '') return [];
+  
+//   const hash = {
+//     2: ['a', 'b' ,'c'],
+//     3: ['d', 'e', 'f'],
+//     4: ['g', 'h', 'i'],
+//     5: ['j', 'k', 'l'],
+//     6: ['m', 'n', 'o'],
+//     7: ['p', 'q', 'r', 's'],
+//     8: ['t', 'u', 'v'],
+//     9: ['w', 'x', 'y', 'z']
+//   };
+
+//   if (hash[digits]) return hash[digits];
+
+//   const createCombinations = (prev, curr) => {
+//     if (curr === '') return;
+//     const prevArr= hash[prev];
+//     const currNum = curr[0];
+//     const currArr = hash[currNum];
+//     const comboStr = prev + curr[0];
+//     const output = [];
+//     for (let i = 0; i < prevArr.length; i++) {
+//       for (let j = 0; j < currArr.length; j++) {
+//         output.push(prevArr[i] + currArr[j]);
+//       }
+//     }
+//     hash[comboStr] = output;
+//     createCombinations(comboStr, curr.slice(1));
+//   };
+
+//   createCombinations(digits[0], digits.slice(1))
+
+//   return hash[digits];
+// };
 
 // const letterCombinations = function(digits) {
 //   if (digits == '') return [];
@@ -53,7 +90,7 @@ const letterCombinations = digits => {
 //     6: 'mno', 7: 'pqrs', 8: 'tuv', 9: 'wxyz'
 //   };
 
-//   const curr = maps[digits[startIndex]];
+//   const curr = map[digits[startIndex]];
 //   for (let i = 0; i < curr.length; i++) {
 //     const letter = curr[i];
 //     prefix += letter;
