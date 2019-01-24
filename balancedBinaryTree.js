@@ -22,6 +22,22 @@ const findDepth = (node, height) => {
   return Math.max(findDepth(node.left, height), findDepth(node.right, height));
 };
 
+// const isBalanced = root => {
+//   return height(root) !== -1;
+// };
+
+// var height = root => {
+//   if (!root) return 0;
+
+//   const leftHeight = height(root.left);
+//   if (leftHeight === -1) return -1;
+//   const rightHeight = height(root.right);
+//   if (rightHeight === -1) return -1;
+
+//   if (Math.abs(leftHeight - rightHeight) > 1) return -1;
+//   return Math.max(leftHeight, rightHeight) + 1;
+// }
+
 /*
 specification
 input: binary tree
