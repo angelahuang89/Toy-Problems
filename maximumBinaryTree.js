@@ -40,6 +40,44 @@ const constructMaximumBinaryTree = nums => {
   return root;
 };
 
+// const constructMaximumBinaryTree = nums => {
+//   return construct(nums, 0, nums.length);
+// };
+
+// const construct = (nums, l, r) => {
+//   if(l === r) return null;
+//   const maxIndex = findMaxIndex(nums, l, r);
+//   const root = new TreeNode(nums[maxIndex]);
+//   root.left = construct(nums, l, maxIndex);
+//   root.right = construct(nums, maxIndex + 1, r);
+//   return root;
+// }
+
+// const findMaxIndex = (nums, left, right) => {
+//   let maxIndex = left;
+//   for(let i = left; i < right; i++) {
+//     if(nums[i] > nums[maxIndex]) {
+//       maxIndex = i;
+//     }
+//   }
+//   return maxIndex;
+// }
+
+// const constructMaximumBinaryTree = nums => {
+//   if (!nums.length) return null;
+  
+//   const max = Math.max(...nums);
+//   const index = nums.indexOf(max);
+//   const left = nums.slice(0, index);
+//   const right = nums.slice(index + 1);
+  
+//   const root = new TreeNode(max);
+//   root.left = constructMaximumBinaryTree(left);
+//   root.right = constructMaximumBinaryTree(right);
+  
+//   return root;
+// };
+
 /*
 specification
 input: integer array with no duplicates
