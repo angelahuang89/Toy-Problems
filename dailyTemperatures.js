@@ -13,23 +13,40 @@
 //   return output;
 // };
 
+// const dailyTemperatures = T => {
+//   const results = new Array(T.length).fill(0);
+//   const stack = [];
+
+//   for (let i = 0; i < T.length; i++) {
+//     const curr = T[i];
+//     while (curr > T[stack[stack.length - 1]]) {
+//       let last = stack[stack.length - 1];
+//       results[last] = i - last;
+//       stack.pop();
+//     }
+//     stack.push(i);
+//   }
+
+//   // for (let i = 0; i < T.length; i++) {
+//   //   if (!results[i]) results[i] = 0;
+//   // }
+
+//   return results;
+// };
+
 const dailyTemperatures = T => {
-  const results = [];
-  const stack = [];
-
-  for (let i = 0; i < T.length; i++) {
-    const curr = T[i];
-    while (curr > T[stack[stack.length - 1]]) {
-      let last = stack[stack.length - 1];
-      results[last] = i - last;
-      stack.pop();
+  const results = new Array(T.length).fill(0);
+  for (let i = T.length - 1; i >= 0; i--) {
+    let j = i + 1;
+    while (j < T.length && T[j] <= T[i]) {
+      if (results[j] > 0) {
+        j = results[j] + j;
+      } else {
+        j = T.length;
+      }
     }
-    stack.push(i);
+    if (j < T.length) results[i] = j - i;
   }
-  for (let i = 0; i < T.length; i++) {
-    if (!results[i]) results[i] = 0;
-  }
-
   return results;
 }
 
