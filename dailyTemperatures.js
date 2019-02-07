@@ -1,19 +1,37 @@
+// const dailyTemperatures = T => {
+//   const output = [];
+//   for (let i = 0; i < T.length; i++) {
+//     const curr = T[i];
+//     for (let j = i + 1; j < T.length; j++) {
+//       if (T[j] > curr) {
+//         output.push(j - i);
+//         break;
+//       }
+//     }
+//     if (output.length !== i + 1) output.push(0);
+//   }
+//   return output;
+// };
+
 const dailyTemperatures = T => {
-  const output = [];
+  const results = [];
+  const stack = [];
+
   for (let i = 0; i < T.length; i++) {
     const curr = T[i];
-    let count = 0;
-    for (let j = i + 1; j < T.length; j++) {
-      count++;
-      if (T[j] > curr) {
-        output.push(count);
-        break;
-      }
+    while (curr > T[stack[stack.length - 1]]) {
+      let last = stack[stack.length - 1];
+      results[last] = i - last;
+      stack.pop();
     }
-    if (output.length !== i + 1) output.push(0);
+    stack.push(i);
   }
-  return output;
-};
+  for (let i = 0; i < T.length; i++) {
+    if (!results[i]) results[i] = 0;
+  }
+
+  return results;
+}
 
 // specification
 // input: array of numbers representing temperatures
