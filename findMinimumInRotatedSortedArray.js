@@ -18,6 +18,26 @@ const findMin = nums => {
   }  
 };
 
+// const findMin = nums => {
+//   let left = 0;
+//   let right = nums.length - 1;
+  
+//   while(left + 1 < right){
+//     const mid = left + Math.floor((right - left) / 2);
+//     if (nums[mid] >= nums[right]) {
+//       left = mid;
+//     } else{
+//       right = mid;
+//     }
+//   }
+  
+//   if (nums[left] > nums[right]) {
+//     return nums[right];
+//   } else{
+//     return nums[left];
+//   }
+// };
+
 // specification
 // input: rotated sorted array of integers 
 // output: minimum element in array
